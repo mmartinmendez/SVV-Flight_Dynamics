@@ -4,22 +4,30 @@
 
 # Stationary flight condition
 
-hp0    =       	  # pressure altitude in the stationary flight condition [m]
-V0     =             # true airspeed in the stationary flight condition [m/sec]
-alpha0 =        	  # angle of attack in the stationary flight condition [rad]
-th0    =        	  # pitch angle in the stationary flight condition [rad]
+import math
+
+hp0    =  1     	  # pressure altitude in the stationary flight condition [m]
+V0     =  1          # true airspeed in the stationary flight condition [m/sec]
+alpha0 =  1      	  # angle of attack in the stationary flight condition [rad]
+th0    =  1      	  # pitch angle in the stationary flight condition [rad]
 
 # Aircraft mass
-m      =          	  # mass [kg]
+m      =  1        	  # mass [kg]
 
 # aerodynamic properties
-e      =             # Oswald factor [ ]
-CD0    =             # Zero lift drag coefficient [ ]
-CLa    =             # Slope of CL-alpha curve [ ]
+e      =  1           # Oswald factor [ ]
+CD0    =  1           # Zero lift drag coefficient [ ]
+CLa    =  1           # Slope of CL-alpha curve [ ]
 
 # Longitudinal stability
-Cma    =             # longitudinal stabilty [ ]
-Cmde   =             # elevator effectiveness [ ]
+Cma    =  1           # longitudinal stabilty [ ]
+Cmde   =  1           # elevator effectiveness [ ]
+
+
+
+
+
+#----------------Values above changed for usability---------------#
 
 # Aircraft geometry
 
@@ -34,7 +42,7 @@ bh     = 5.791	          # stabilser span [m]
 A      = b**2/S           # wing aspect ratio [ ]
 Ah     = bh**2/Sh         # stabilser aspect ratio [ ]
 Vh_V   = 1		  # [ ]
-ih     = -2*pi/180       # stabiliser angle of incidence [rad]
+ih     = -2*math.pi/180       # stabiliser angle of incidence [rad]
 
 # Constant values concerning atmosphere and gravity
 
@@ -60,24 +68,24 @@ KY2    = 1.25*1.114
 
 Cmac   = 0                     # Moment coefficient about the aerodynamic centre [ ]
 CNwa   = CLa   		        # Wing normal force slope [ ]
-CNha   = 2*pi*Ah/(Ah+2)        # Stabiliser normal force slope [ ]
+CNha   = 2*math.pi*Ah/(Ah+2)        # Stabiliser normal force slope [ ]
 depsda = 4/(A+2)               # Downwash gradient [ ]
 
 # Lift and drag coefficient
 
 CL = 2*W/(rho*V0**2*S)               # Lift coefficient [ ]
-CD = CD0 + (CLa*alpha0)**2/(pi*A*e)  # Drag coefficient [ ]
+CD = CD0 + (CLa*alpha0)**2/(math.pi*A*e)  # Drag coefficient [ ]
 
 # Stabiblity derivatives
 
-CX0    = W*sin(th0)/(0.5*rho*V0**2*S)
+CX0    = W*math.sin(th0)/(0.5*rho*V0**2*S)
 CXu    = -0.02792
 CXa    = -0.47966
 CXadot = +0.08330
 CXq    = -0.28170
 CXde   = -0.03728
 
-CZ0    = -W*cos(th0)/(0.5*rho*V0**2*S)
+CZ0    = -W*math.cos(th0)/(0.5*rho*V0**2*S)
 CZu    = -0.37616
 CZa    = -5.74340
 CZadot = -0.00350
