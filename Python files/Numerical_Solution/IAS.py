@@ -4,9 +4,13 @@
 #import math
 from math import*
 
-def IAS():
+def aparameters(h1):
 
     #constants
+    """
+
+    :rtype : integer
+    """
     g = 9.81
     R = 287.0
 
@@ -24,37 +28,29 @@ def IAS():
     #gradient
     a = -0.0065
 
-    h1=1000
 
-#-------calculations for altitude = 0 - 11000m---------
+
     if h1>0. and h1<=11000.:
     
         #TEMPERATURE
         T1 = T0 + a*(h1-h0)
-        print "Temperature =",T1, "K"
         #PRESSURE
         p1 = p0*((T1/T0)**(-g/(a*R)))
-        print "Pressure =", p1, "Pa"
         #DENSITY
         rho1 = rho0*((T1/T0)**((-g/(a*R))-1))
-        print "Density =", rho1, "kg/m^3"
 
-#-------calculations foraltitude = 11000 - 20000m------
-    elseif h1>11000. and h1<=20000.:
+
+    elif h1>11000. and h1<=20000.:
 
         #TEMPERATURE
         T1 = T11000
-        print "Temperature =",T1, "K"
         #PRESSURE
         p1 = p11000*exp((-g/(R*T11000))*(h1-h11000))
-        print "Pressure =", p1, "Pa"
         #DENSITY
         rho1 = rho11000*exp((-g/(R*T11000))*(h1-h11000))
-        print "Density =", rho1, "kg/m^3"
 
     else:
         print "Invalid altitude"
-
 
     return T1,p1,rho1
 
