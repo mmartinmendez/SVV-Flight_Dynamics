@@ -13,7 +13,7 @@ class SampleTest(unittest.TestCase):
 
     def test1(self):   # First test function
         print 'test1: Begin'
-        self.assertNotEqual(self.variable1,self.variable2,'A message can be put here in case the test fails')
+        self.assertNotEqual(self.variable2,self.variable1,'A message can be put here in case the test fails')
         print 'test1: End'
 
     def test2(self):   # Second test function
