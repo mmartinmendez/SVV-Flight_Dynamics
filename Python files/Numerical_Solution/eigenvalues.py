@@ -1,2 +1,2 @@
-# -*- coding: utf-8 -*-
-
+def eigenvalues(sys):
+    return [0,0]

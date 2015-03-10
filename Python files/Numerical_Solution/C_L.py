@@ -1,2 +1,2 @@
-# -*- coding: utf-8 -*-
-
+def C_L(W,V,S,rho):
+    return 0
