@@ -31,26 +31,23 @@ def aparameters(h1):
 
 
     if h1>0. and h1<=11000.:
-    
-        #TEMPERATURE
+
         T1 = T0 + a*(h1-h0)
-        #PRESSURE
         p1 = p0*((T1/T0)**(-g/(a*R)))
-        #DENSITY
         rho1 = rho0*((T1/T0)**((-g/(a*R))-1))
 
 
     elif h1>11000. and h1<=20000.:
 
-        #TEMPERATURE
         T1 = T11000
-        #PRESSURE
         p1 = p11000*exp((-g/(R*T11000))*(h1-h11000))
-        #DENSITY
         rho1 = rho11000*exp((-g/(R*T11000))*(h1-h11000))
 
     else:
         print "Invalid altitude"
+        T1=0
+        p1=0
+        rho1=0
 
     return T1,p1,rho1
 
