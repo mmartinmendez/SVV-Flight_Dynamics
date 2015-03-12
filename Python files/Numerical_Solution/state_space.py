@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 
 from numpy import matrix
@@ -45,3 +46,9 @@ def stateSpaceAsymmetric():
     D=matrix([0])
     sys2 = ss(A,B,C,D)
     return sys2
+=======
+#import lti What is this module called
+def statespace(C_1,C_2,C_3,u):
+    sys = 0 #calculate sys with lti module
+    return sys
+>>>>>>> origin/master
