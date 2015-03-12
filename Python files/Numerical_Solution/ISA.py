@@ -2,6 +2,7 @@
 #==============================================
 
 from math import*
+from Cit_par import*
 
 def aparameters(h1):
 
@@ -9,31 +10,23 @@ def aparameters(h1):
 
     :rtype : integer
     """
-    #constants
-    g = 9.81
-    R = 287.0
 
     #sea level conditions
-    T0 = 288.15
     p0 = 101325.0
-    rho0 = 1.225
-    h0 = 0.
+
     #11000m conditions
     T11000 = 216.65
     p11000 = 22614.2066867
     rho11000 = 0.363630885894
     h11000 = 11000.
 
-    #gradient
-    a = -0.0065
-
 
 
     if h1>0. and h1<=11000.:
 
-        T1 = T0 + a*(h1-h0)
-        p1 = p0*((T1/T0)**(-g/(a*R)))
-        rho1 = rho0*((T1/T0)**((-g/(a*R))-1))
+        T1 = Temp0 + lam*(h1-hp0)
+        p1 = p0*((T1/Temp0)**(-g/(lam*R)))
+        rho1 = rho0*((T1/Temp0)**((-g/(lam*R))-1))
 
 
     elif h1>11000. and h1<=20000.:
@@ -49,4 +42,6 @@ def aparameters(h1):
         rho1=0
 
     return T1,p1,rho1
+
+def
 
