@@ -1,6 +1,8 @@
 '''
 Calculates drag coefficient using D=T, thus assuming non-accalerating flight.
-input: Density, Wing Area, Tr
+Input: Density, Wing Area, Tr
+Output: Drag coefficient
+Output format: float
 '''
 
 def C_D(rho,S,V,T_p):
