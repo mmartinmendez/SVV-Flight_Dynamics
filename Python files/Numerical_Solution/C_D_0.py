@@ -1,2 +1,7 @@
-def C_D_0(rho,T,alpha,S,V,A,C_L_alpha):
+'''
+Input: polyfit of C_L vs C_D
+'''
+
+def C_D_0(CD_polyfit):
+    
     return 0
