@@ -43,7 +43,7 @@ def aparameters(h1):
         rho1 = rho11000*exp((-g/(R*T11000))*(h1-h11000))
 
     else:
-        print "Invalid altitude"
+        raise IOError("altitude to high (over 20000 meters)")
         T1=0
         p1=0
         rho1=0
