@@ -1,12 +1,9 @@
 import matplotlib.pyplot as plt
 
-
-alpha = [0,1,2,3,4,5,6,7,8]
-C_L = alpha/10
-CL_alpha(C_L,alpha)
-
-def CL_alpha(C_L,alpha):
-    plt.plot(C_L,alpha)
-    plt.axis([-5, 20, -0.2, 2])
-    plt.title(r'$\alpha$')
-    plt.show
+def CL_alpha(alpha,CL):
+    plt.plot(alpha,CL)
+    plt.axis([-5, 20, -0.2, 1])
+    plt.xlabel(r'$\alpha$')
+    plt.ylabel(r'$C_L$')
+    plt.title(r"$C_L \  -\ \alpha$")
+    plt.show()

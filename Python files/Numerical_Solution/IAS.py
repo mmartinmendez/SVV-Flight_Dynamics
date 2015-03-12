@@ -1,16 +1,15 @@
 #International Standard Atmopshere calculations
 #==============================================
 
-#import math
 from math import*
 
 def aparameters(h1):
 
-    #constants
     """
 
     :rtype : integer
     """
+    #constants
     g = 9.81
     R = 287.0
 
