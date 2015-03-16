@@ -23,7 +23,6 @@ class Main:
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
-        print size(self.data[5:7])
         W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
 
         print W
