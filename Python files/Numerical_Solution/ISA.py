@@ -20,9 +20,12 @@ def aparameters(h1):
     rho11000 = 0.363630885894
     h11000 = 11000.
 
+    if h1==0:
+        T1=Temp0
+        p1=p0
+        rho1=rho0
 
-
-    if h1>0. and h1<=11000.:
+    elif h1>0. and h1<=11000.:
 
         T1 = Temp0 + lam*(h1-hp0)
         p1 = p0*((T1/Temp0)**(-g/(lam*R)))

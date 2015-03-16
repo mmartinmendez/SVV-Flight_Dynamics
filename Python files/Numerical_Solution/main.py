@@ -3,7 +3,7 @@ __author__ = 'myth'
 from Numerical_Solution import *
 
 class Main:
-    def __init__(self,h,p,S,V,T_p,W_S,filename):                 #Initializes all the varibles needed
+    def __init__(self,h,p,S,V,T_p,W_S,filename1,filename2):                 #Initializes all the varibles needed
         print 'initializing............'
         self.h1=h
         self.p=p
@@ -11,10 +11,9 @@ class Main:
         self.V=V
         self.T_p=T_p
         self.W_S=W_S
-        self.filename=filename
-
-    def importFile(self):
-        data = input.inputFile(self.filename)
+        self.filename1=filename1
+        self.filename2=filename2
+        self.data,self.weights=input.inputFile(self.filename1,self.filename2)
 
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
@@ -22,7 +21,7 @@ class Main:
 
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
-        a,b,c = IAS.aparameters(self.h1)
+        a,b,c = ISA.aparameters(self.h1)
         W = weight(self.W_S)
         print 'First Measurement Series Calculation: End'
 
@@ -45,14 +44,14 @@ def init():
     S=15
     V=100
     T_p=1200
-    filename = 'fags.txt'
+    filename1 = 'fags.txt'
+    filename2 = 'weights.txt'
     W_S = 60500 #[N]
-    ap = Main(h,p,S,V,T_p,W_S,filename)
+    ap = Main(h,p,S,V,T_p,W_S,filename1,filename2)
     return ap
 
 if __name__== "__main__":
     ap = init()
-    ap.importFile()
     ap.firstMeasurementSeries()
     ap.secondMeasurementSeries()
     ap.dynamicMeasurementSeries()
