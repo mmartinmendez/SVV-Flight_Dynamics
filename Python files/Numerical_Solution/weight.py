@@ -1,4 +1,3 @@
-def weigth(W_S):
-    f = open("analyserdutch.txt", "r")
-    lines = f.read()
-    return 0
+def weigth(W_S,W_pax,W_fuel):
+    W = W_S+sum(W_pax)-W_fuel
+    return W
