@@ -22,7 +22,7 @@ class Main:
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
-        W = weight(self.W_S)
+        W = weight.weight(self.W_S)
         print 'First Measurement Series Calculation: End'
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
