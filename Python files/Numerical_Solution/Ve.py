@@ -1,2 +1,2 @@
-# -*- coding: utf-8 -*-
-
+def V_e(V,rho,rho_0,W,W_s):
+    return 0

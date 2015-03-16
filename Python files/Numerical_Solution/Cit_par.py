@@ -20,7 +20,7 @@ CD0    =  1           # Zero lift drag coefficient [ ]
 CLa    =  1           # Slope of CL-alpha curve [ ]
 
 # Longitudinal stability
-Cma    =  1           # longitudinal stabilty [ ]
+#Cma    =  1           # longitudinal stabilty [ ]
 Cmde   =  1           # elevator effectiveness [ ]
 
 
@@ -93,6 +93,7 @@ CZq    = -5.66290
 CZde   = -0.69612
 
 Cmu    = +0.06990
+Cma    = -0.5626
 Cmadot = +0.17800
 Cmq    = -8.79415
 

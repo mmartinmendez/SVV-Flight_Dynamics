@@ -1,4 +1,5 @@
 __author__ = 'myth'
 
-import IAS, C_L, C_D, C_L_alpha, C_D_alpha
+import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input
 from Cit_par import*
+from state_space import*

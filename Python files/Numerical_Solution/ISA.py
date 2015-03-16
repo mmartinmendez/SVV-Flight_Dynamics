@@ -43,5 +43,4 @@ def aparameters(h1):
 
     return T1,p1,rho1
 
-def
 
