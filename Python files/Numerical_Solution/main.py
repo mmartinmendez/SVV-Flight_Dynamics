@@ -26,7 +26,7 @@ class Main:
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
         W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
-        CL = C_L(W,self.data[19],S,rho0)
+        CL = C_L.C_L(W,self.data[19],S,rho0)
         delta_evsVplot(self.data[9],self.data[19])
         print 'First Measurement Series Calculation: End'
 
