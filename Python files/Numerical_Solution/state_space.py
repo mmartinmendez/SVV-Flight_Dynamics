@@ -1,7 +1,7 @@
 
-
-from numpy import*
-from matplotlib.pyplot import*
+#put in comments!
+#==============+==============
+from numpy import matrix
 from Cit_par import*
 from control.matlab import*
 

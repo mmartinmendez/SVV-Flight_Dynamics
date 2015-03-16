@@ -1,15 +1,16 @@
 __author__ = 'myth'
 
-from Numerical_Solution import*
+from Numerical_Solution import *
 
 class Main:
-    def __init__(self,h,p,S,V,T_p,filename):                 #Initializes all the varibles needed
+    def __init__(self,h,p,S,V,T_p,W_S,filename):                 #Initializes all the varibles needed
         print 'initializing............'
         self.h1=h
         self.p=p
         self.S=S
         self.V=V
         self.T_p=T_p
+        self.W_S=W_S
         self.filename=filename
 
     def importFile(self):
@@ -18,6 +19,11 @@ class Main:
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
+
+    def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
+        print 'First Measurement Series Calculation: Begin'
+        a,b,c = IAS.aparameters(self.h1)
+        W = weight(self.W_S)
         print 'First Measurement Series Calculation: End'
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
@@ -40,7 +46,8 @@ def init():
     V=100
     T_p=1200
     filename = 'fags.txt'
-    ap = Main(h,p,S,V,T_p,filename)
+    W_S = 60500 #[N]
+    ap = Main(h,p,S,V,T_p,W_S,filename)
     return ap
 
 if __name__== "__main__":

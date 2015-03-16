@@ -1,3 +1,4 @@
-def x_cg(mass,arm):
-    #probably more inputs needed (more different masses)
+
+def x_cg(W,arm):
+    #probably needs more inputs
     return 0
