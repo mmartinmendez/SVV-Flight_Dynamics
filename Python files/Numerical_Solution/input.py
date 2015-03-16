@@ -12,6 +12,9 @@ def inputFile(filename1,filename2):
     weights = (row.strip().split() for row in raw_weights )
     col_weights = zip(*weights)
     col_weights1 = array(col_weights)
+    col_weights1 = col_weights1[0]
+    print col_weights1
+
 
     return col_data1 , col_weights1
 

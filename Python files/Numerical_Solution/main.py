@@ -20,6 +20,7 @@ class Main:
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
         W = weight.weight(self.W_S,self.weights,self.data[6:8],g)
+        print W
 
         print 'First Measurement Series Calculation: End'
 
