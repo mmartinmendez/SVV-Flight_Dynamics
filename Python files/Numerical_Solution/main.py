@@ -15,14 +15,12 @@ class Main:
         self.filename2=filename2
         self.data,self.weights=input.inputFile(self.filename1,self.filename2)
 
-    def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
-        print 'First Measurement Series Calculation: Begin'
-        a,b,c = ISA.aparameters(self.h1)
 
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S)
+        W = weight.weight(self.W_S,self.weights,self.data[6:8])
+
         print 'First Measurement Series Calculation: End'
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
