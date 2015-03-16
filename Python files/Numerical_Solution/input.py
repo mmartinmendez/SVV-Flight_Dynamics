@@ -51,5 +51,5 @@ def inputFile(filename1,filename2,filename3,filename4,filename5):
     col_trim = zip(*trim)
     print col_trim
 
-    return col_data2 , col_weights2, col_shift2, col_polar1
+    return col_data2 , col_weights2, col_shift2, col_polar1, col_trim
 

@@ -8,7 +8,7 @@ clear()
 import matplotlib.pyplot as plt
 plt.close("all")
 
-import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight, oswaldfactor
+import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight, oswaldfactor, Veq
 from Cit_par import*
 from state_space import*
 from numpy import*
@@ -28,10 +28,11 @@ class Main:
         self.filename4=filename4
         self.filename5=filename5
         self.data,self.weights,self.statCG,self.statCLCD,self.statDEV=input.inputFile(self.filename1,self.filename2,self.filename3,self.filename4,self.filename5)
+        self.W = weight.weight(W_S,self.weights,self.statCLCD[8],g)
         #names for arrays of files: statCLCD, statDEV (for elevator-trim) and statCG (for cg_shift)
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
-        a,b,c = ISA.aparameters(self.h1)
+#        a,b,c = ISA.aparameters(self.h1)
         W = weight.weight(self.W_S,self.weights,self.statCLCD[8],g)
         CL = C_L(W,rho0,self.statCLCD[4],S)
         T_p = 1200*np.ones(6)#Temporary value
@@ -48,7 +49,9 @@ class Main:
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
         print 'Second Measurement Series Calculation: Begin'
-        delta_evsVplot(self.statDEV[6],self.statDEV[4])
+        Ve = Veq(statDEV[4],self.W,self.W_S)
+        delta_evsVplot(self.statDEV[6],Ve)
+        
         print 'Second Measurement Series Calculation: End'
 
     def dynamicMeasurementSeries(self):             # Call all functions needed for calculation in the dynamic measurement series
