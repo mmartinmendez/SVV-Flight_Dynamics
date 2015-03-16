@@ -1,9 +1,10 @@
 
 #put in comments!
 #==============+==============
-from numpy import matrix
+from numpy import matrix,linalg
 from Cit_par import*
 from control.matlab import*
+
 
 
 def stateSpaceSymmetric():
