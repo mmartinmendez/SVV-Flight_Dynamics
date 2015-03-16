@@ -4,9 +4,9 @@ def weight(W_S,W_pf,W_fuel,g):
     print W_pf
     print W_fuel
     print g
-    W = np.zeros(len(W_fuel[:,0])-2)
-    for i in range(len(W_fuel[:,0])-2):
-        W[i] = (W_S+sum(W_pf[0:-1])*g+W_pf[-1]*g*0.45359237-sum(W_fuel[i+2,:]))
+    W = np.zeros(np.size(W_fuel)/2)
+    for i in range(np.size(W_fuel)/2):
+        W[i] = (W_S+sum(W_pf[0:-1])*g+W_pf[-1]*g*0.45359237-sum(W_fuel[i,:]))
     return W
 
 #=================test=================
