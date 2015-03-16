@@ -44,7 +44,7 @@ def init():
     S=15
     V=100
     T_p=1200
-    filename1 = 'fags.txt'
+    filename1 = 'FTISxprt-20150305_144557.txt'
     filename2 = 'weights.txt'
     W_S = 60500 #[N]
     ap = Main(h,p,S,V,T_p,W_S,filename1,filename2)
