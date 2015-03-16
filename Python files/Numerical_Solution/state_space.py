@@ -29,7 +29,6 @@ def stateSpaceSymmetric():
     t = linspace(0,1,10)
     x0 = [1,0,0,0]
     initial(sys1,t,x0)
-    print linalg.eigvals(A)
 
 
 def stateSpaceAsymmetric():
