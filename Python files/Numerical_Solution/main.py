@@ -19,7 +19,9 @@ class Main:
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S,self.weights,self.data[6:8])
+     #   W = weight.weight(self.W_S,self.weights,self.data[6:8])
+        lst = array(self.data[6])
+        print lst
 
         print 'First Measurement Series Calculation: End'
 
@@ -42,7 +44,7 @@ def init():
     S=15
     V=100
     T_p=1200
-    filename1 = 'fags.txt'
+    filename1 = 'FTISxprt-20150305_144557.txt'
     filename2 = 'weights.txt'
     W_S = 60500 #[N]
     ap = Main(h,p,S,V,T_p,W_S,filename1,filename2)
