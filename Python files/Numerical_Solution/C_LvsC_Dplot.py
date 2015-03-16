@@ -13,14 +13,15 @@ import numpy as np
 def C_LvsC_Dplot(C_L,C_D,value = None):
     if len(C_L) != len(C_D):
         raise IOError("arrays C_L and C_D not of equal lenght")
-    CD_ployfit = np.polyfit(C_L,C_D,2)
-    CD_ployfit = np.poly1d(CD_ployfit)
+    CD_polyfit = np.polyfit(C_L,C_D,2)
+    CD_polyfit = np.poly1d(CD_polyfit)
     x = np.linspace(C_L[0]-1,C_L[-1],100)
-    plt.plot(C_D,C_L,'.',CD_ployfit(x),x,'-')
+    plt.plot(C_D,C_L,'.',CD_polyfit(x),x,'-')
+    plt.show()
     if value == None:
-        return CD_ployfit
+        return CD_polyfit
     else:
-        return CD_ployfit(value)
+        return CD_polyfit(value)
 
 #==========test==========#
 #from random import randint
