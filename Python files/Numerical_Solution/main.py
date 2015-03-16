@@ -1,6 +1,9 @@
 __author__ = 'myth'
 
-from Numerical_Solution import *
+import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight
+from Cit_par import*
+from state_space import*
+from numpy import*
 
 class Main:
     def __init__(self,h,p,S,V,T_p,W_S,filename1,filename2):                 #Initializes all the varibles needed
@@ -19,7 +22,6 @@ class Main:
     def firstMeasurementSeries(self):               # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
         a,b,c = ISA.aparameters(self.h1)
-        print size(self.data[5:7])
         W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
 
         print W
