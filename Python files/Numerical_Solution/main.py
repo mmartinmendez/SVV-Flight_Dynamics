@@ -8,7 +8,7 @@ clear()
 import matplotlib.pyplot as plt
 plt.close("all")
 
-import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight, oswaldfactor, Veq, eigenvalues, Period
+import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight, oswaldfactor, Veq, eigenvalues, Response_variables
 from n_Cit_par import*
 from state_space import*
 from numpy import*
@@ -62,9 +62,9 @@ class Main:
         sys2 = stateSpaceAsymmetric()
         eig_asymmetric = array(eigenvalues.eigenvalues(sys2))
         eigen = append(eig_symmetric,eig_asymmetric)
-        print eigen
+        eigen.tolist()
 
-        result = Period.Period(eigen)
+        result = Response_variables.Response(eigen)
 
      #   short_period()
         print 'Dynamic Measurement Series Calculation: End'
