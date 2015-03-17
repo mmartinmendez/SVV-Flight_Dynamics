@@ -1,2 +1,7 @@
+from control.matlab import*
+from numpy import linalg
+
 def eigenvalues(sys):
-    return [0,0]
+    [a,b,c,d] = ssdata(sys)
+    eig = linalg.eigvals(a)
+    return eig
