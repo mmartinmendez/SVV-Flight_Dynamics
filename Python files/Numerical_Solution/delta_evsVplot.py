@@ -7,10 +7,11 @@ def delta_evsVplot(delta_e,V, value=None):
 #    Vinv = V**-1
     de_polyfit = np.polyfit(V,delta_e,2)
     de_polyfit = np.poly1d(de_polyfit)
-    x = np.linspace(min(delta_e),max(delta_e),100)
+    plt.figure()
+    x = np.linspace(min(V),max(V),100)
 #    y = de_polyfit(x)**-1
 #    print de_polyfit(x)
-    plt.plot(V,delta_e,'.',de_polyfit(x),x,'-')
+    plt.plot(V,delta_e,'.',x,de_polyfit(x),'-')
     plt.show()
     if value == None:
         return de_polyfit

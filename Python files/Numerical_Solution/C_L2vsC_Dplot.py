@@ -29,4 +29,4 @@ def C_L2vsC_Dplot(C_L,C_D,value = None):
 #C_D = C_D_0 + C_L**2/(m.pi*A*e)
 #for i in range(len(C_D)):
 #    C_D[i] += randint(-1,1)*0.1
-#print(C_LvsC_Dplot(C_L,C_D,value = 0))
+#print(C_L2vsC_Dplot(C_L,C_D,value = 0))
