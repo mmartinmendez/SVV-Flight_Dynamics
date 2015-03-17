@@ -27,13 +27,6 @@ def stateSpaceSymmetric():
     C=matrix([0,1,0,0])
     D=matrix([0])
     sys1 = ss(A,B,C,D)
-    t = linspace(0,1,10)
-    x0 = [1,0,0,0]
-    initial(sys1,t,x0)
-    eig = array(eigenvalues.eigenvalues(sys1))
-    eig.tolist()
-    result = Response_variables.Response(eig)
-    print result
     return sys1
 
 
