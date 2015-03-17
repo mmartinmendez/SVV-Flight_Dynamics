@@ -1,5 +1,5 @@
 nr.	time	ET*	hp	IAS	a	de	detr	Fe	FFl	FFr	F. used	TAT
-	[hh:mm:ss]	[sec]	[ft]	[kts]	[deg]	[deg]	[deg]	[N]	[lbs/hr]	[lbs/hr]	[lbs]	[°C]
+	[hh:mm:ss]	[sec]	[ft]	[kts]	[deg]	[deg]	[deg]	[N]	[lbs/hr]	[lbs/hr]	[lbs]	[Â°C]
 												
 1	00:34:58	2098	8950	161	4.6	-1.2	2.2	0	380	429	626	-0.2
 2	00:36:30	2190	8520	171	4	-0.6	2.2	24	387	434	649	0.8
