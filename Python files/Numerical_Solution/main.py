@@ -28,12 +28,12 @@ class Main:
         self.filename4=filename4
         self.filename5=filename5
         self.data,self.weights,self.statCG,self.statCLCD,self.statDEV=input.inputFile(self.filename1,self.filename2,self.filename3,self.filename4,self.filename5)
-        self.W = weight.weight(W_S,self.weights,self.statCLCD[8],g)
         #names for arrays of files: statCLCD, statDEV (for elevator-trim) and statCG (for cg_shift)
+
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
 #        a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S,self.weights,self.statCLCD[8],g)
+        W = weight.weight(self.W_S,self.weights,self.statCLCD[:][8],g)
         CL = C_L(W,rho0,self.statCLCD[4],S)
         T_p = 1200*np.ones(6)#Temporary value
         CD = C_D(T_p,rho0,self.statCLCD[4],S)
@@ -56,8 +56,9 @@ class Main:
 
     def dynamicMeasurementSeries(self):             # Call all functions needed for calculation in the dynamic measurement series
         print 'Dynamic Measurement Series Calculation: Begin'
-        W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
+        #W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
         stateSpaceSymmetric()
+        stateSpaceAsymmetric()
         print 'Dynamic Measurement Series Calculation: End'
 
 def init():
@@ -81,7 +82,7 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-    ap.firstMeasurementSeries()
-    ap.secondMeasurementSeries()
+  #  ap.firstMeasurementSeries()
+  #  ap.secondMeasurementSeries()
     ap.dynamicMeasurementSeries()
 

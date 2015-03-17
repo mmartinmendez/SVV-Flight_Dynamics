@@ -1,8 +1,8 @@
 import numpy as np
 def weight(W_S,W_pf,W_fuel,g):
-    W = np.zeros(len(W_fuel[0]))
-    for i in range(len(W_fuel[0])):
-        W[i] = W_S+sum(W_pf[0:-1])*g+W_pf[-1]*g*0.45359237-W_fuel[0][i]*g-W_fuel[1][i]*g
+    W = np.zeros(len(W_fuel))
+    for i in range(len(W_fuel)):
+        W[i] = W_S+sum(W_pf[0:-1])*g+W_pf[-1]*g*0.45359237-W_fuel[i]*g
     return W
 
 #=================test=================

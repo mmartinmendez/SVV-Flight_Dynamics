@@ -23,6 +23,7 @@ def inputFile(filename1,filename2,filename3,filename4,filename5):
             results_W.append(line.strip().split())
     for i in range(len(results_W)):
         new_results_W.append(list(convert(results_W[i])))
+    new_results_W = array(zip(*new_results_W))
 
 
     # Filename3 -- with the data for the shift in center of gravity -- first stationary measurement series
@@ -53,7 +54,7 @@ def inputFile(filename1,filename2,filename3,filename4,filename5):
     for i in range(len(results_det)):
         new_results_det.append(list(convert(results_det[i])))
 
-    return new_results_data , new_results_W, new_results_shift, new_results_CL, new_results_det
+    return new_results_data , new_results_W[0], new_results_shift, new_results_CL, new_results_det
 
 def convert( someList ):
     for item in someList:
