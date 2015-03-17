@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c8d8fba-06b8-452b-9821-f8882f730625" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Numerical_Solution/stationarythrust.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Numerical_Solution/delta_e-Vplot.py" afterPath="$PROJECT_DIR$/Numerical_Solution/delta_evsVplot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_D.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_D.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_D_alpha.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_D_alpha.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_L.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_L.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_L2vsC_Dplot.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_L2vsC_Dplot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_L_alpha.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_L_alpha.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/C_LvsC_Dplot.py" afterPath="$PROJECT_DIR$/Numerical_Solution/C_LvsC_Dplot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/FTISxprt-20150305_144557.txt" afterPath="$PROJECT_DIR$/Numerical_Solution/FTISxprt-20150305_144557.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/input.py" afterPath="$PROJECT_DIR$/Numerical_Solution/input.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/Response_variables.py" afterPath="$PROJECT_DIR$/Numerical_Solution/Response_variables.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/dynamic_response.py" afterPath="$PROJECT_DIR$/Numerical_Solution/dynamic_response.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/main.py" afterPath="$PROJECT_DIR$/Numerical_Solution/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/stationary_CL-CD.txt" afterPath="$PROJECT_DIR$/Numerical_Solution/stationary_CL-CD.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/stationary_cg_shift.txt" afterPath="$PROJECT_DIR$/Numerical_Solution/stationary_cg_shift.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/stationary_elevator-trim.txt" afterPath="$PROJECT_DIR$/Numerical_Solution/stationary_elevator-trim.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/weight.py" afterPath="$PROJECT_DIR$/Numerical_Solution/weight.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/state_space.py" afterPath="$PROJECT_DIR$/Numerical_Solution/state_space.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py" afterPath="$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py" />
     </list>
     <ignored path="Python files.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,21 +33,19 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Numerical_Solution/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="1635">
+              <caret line="99" column="3" selection-start-line="99" selection-start-column="3" selection-end-line="99" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="C_L2vsC_Dplot.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Numerical_Solution/C_L2vsC_Dplot.py">
+      <file leaf-file-name="dynamic_response.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Numerical_Solution/dynamic_response.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0703125" vertical-offset="0" max-vertical-offset="640">
+              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,11 +53,45 @@
       <file leaf-file-name="Response_variables.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Numerical_Solution/Response_variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="405">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="state_space.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Numerical_Solution/state_space.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="975">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              <folding>
+                <element signature="e#50#87#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eigenvalues.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Numerical_Solution/eigenvalues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,11 +131,12 @@
         <option value="$PROJECT_DIR$/Numerical_Solution/Cit_par.py" />
         <option value="$PROJECT_DIR$/Numerical_Solution/Eigenvalue.py" />
         <option value="$PROJECT_DIR$/Numerical_Solution/eigenvalues.py" />
-        <option value="$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py" />
-        <option value="$PROJECT_DIR$/Numerical_Solution/state_space.py" />
         <option value="$PROJECT_DIR$/Numerical_Solution/Period.py" />
-        <option value="$PROJECT_DIR$/Numerical_Solution/Response_variables.py" />
+        <option value="$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py" />
         <option value="$PROJECT_DIR$/Numerical_Solution/main.py" />
+        <option value="$PROJECT_DIR$/Numerical_Solution/state_space.py" />
+        <option value="$PROJECT_DIR$/Numerical_Solution/Response_variables.py" />
+        <option value="$PROJECT_DIR$/Numerical_Solution/dynamic_response.py" />
       </list>
     </option>
   </component>
@@ -176,6 +199,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Numerical_Solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Python files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Python files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Numerical_Solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Unit_Tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -443,11 +484,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Period" />
+        <item index="0" class="java.lang.String" itemvalue="Python.state_space" />
         <item index="1" class="java.lang.String" itemvalue="Python.test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.D_b-mu_b" />
-        <item index="3" class="java.lang.String" itemvalue="Python.input" />
-        <item index="4" class="java.lang.String" itemvalue="Python.state_space" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Period" />
+        <item index="3" class="java.lang.String" itemvalue="Python.D_b-mu_b" />
+        <item index="4" class="java.lang.String" itemvalue="Python.input" />
       </list>
     </recent_temporary>
   </component>
@@ -466,15 +507,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="26" width="1400" height="758" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24945612" sideWeight="0.49888143" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.49963742" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24945612" sideWeight="0.49888143" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784432" sideWeight="0.49963742" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46257484" sideWeight="0.53662074" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945612" sideWeight="0.50111854" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.46337926" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -482,11 +525,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5778443" sideWeight="0.53662074" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -531,14 +572,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Numerical_Solution/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="780">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Numerical_Solution/state_space.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="780">
@@ -826,16 +859,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="1920">
           <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Numerical_Solution/eigenvalues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21377672" vertical-offset="0" max-vertical-offset="421">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -843,23 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
           <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Numerical_Solution/state_space.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="e#50#87#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,10 +894,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Numerical_Solution/C_L2vsC_Dplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Numerical_Solution/eigenvalues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Numerical_Solution/Unit_Tests/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Numerical_Solution/state_space.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="975">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#50#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Numerical_Solution/Response_variables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -899,19 +944,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Numerical_Solution/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="1635">
+          <caret line="99" column="3" selection-start-line="99" selection-start-column="3" selection-end-line="99" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Numerical_Solution/C_L2vsC_Dplot.py">
+    <entry file="file://$PROJECT_DIR$/Numerical_Solution/dynamic_response.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0703125" vertical-offset="0" max-vertical-offset="640">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -97,7 +97,7 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-    ap.firstMeasurementSeries()
+  #  ap.firstMeasurementSeries()
     #ap.secondMeasurementSeries()
     ap.dynamicMeasurementSeries()
 

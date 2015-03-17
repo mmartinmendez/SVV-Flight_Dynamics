@@ -1,14 +1,15 @@
 
 #put in comments!
 #==============+==============
-from numpy import matrix,linalg,roots
-from Cit_par import*
+from numpy import matrix,linalg,array
+from n_Cit_par import*
 from control.matlab import*
+import eigenvalues,Response_variables
 
 
 
 def stateSpaceSymmetric():
-    C1=c/V*matrix([[-2*muc,0,0,0],
+    C1=matrix([[-2*muc,0,0,0],
                [0,CZadot-2*muc,0,0],
                [0,0,-1.,0],
                [0,Cmadot,0,-2*muc*KY2]])
@@ -29,6 +30,10 @@ def stateSpaceSymmetric():
     t = linspace(0,1,10)
     x0 = [1,0,0,0]
     initial(sys1,t,x0)
+    eig = array(eigenvalues.eigenvalues(sys1))
+    eig.tolist()
+    result = Response_variables.Response(eig)
+    print result
     return sys1
 
 
