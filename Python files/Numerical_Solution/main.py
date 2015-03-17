@@ -8,7 +8,8 @@ clear()
 import matplotlib.pyplot as plt
 plt.close("all")
 
-import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot
+
+import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot, eigenvalues, Response_variables
 from Cit_par import*
 from state_space import*
 from numpy import*
@@ -57,8 +58,16 @@ class Main:
     def dynamicMeasurementSeries(self):             # Call all functions needed for calculation in the dynamic measurement series
         print 'Dynamic Measurement Series Calculation: Begin'
         #W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
-        stateSpaceSymmetric()
-        stateSpaceAsymmetric()
+        sys1 = stateSpaceSymmetric()
+        eig_symmetric = array(eigenvalues.eigenvalues(sys1))
+        sys2 = stateSpaceAsymmetric()
+        eig_asymmetric = array(eigenvalues.eigenvalues(sys2))
+        eigen = append(eig_symmetric,eig_asymmetric)
+        eigen.tolist()
+
+        result = Response_variables.Response(eigen)
+
+     #   short_period()
         print 'Dynamic Measurement Series Calculation: End'
 
 def init():
@@ -84,7 +93,9 @@ def init():
 
 if __name__== "__main__":
     ap = init()
+
     ap.firstMeasurementSeries()
     ap.secondMeasurementSeries()
     #ap.dynamicMeasurementSeries()
+
 
