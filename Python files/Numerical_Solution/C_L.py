@@ -1,7 +1,7 @@
 import numpy as np
 
 def C_L(W,rho_0,V,S):
-    CL = W*(0.5*rho_0*np.square(V)*S)**-1
+    CL = W*(0.5*rho_0*np.square(V*0.514444444)*S)**-1
     return CL
 
 #============test============

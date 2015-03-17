@@ -7,5 +7,5 @@ Output format: array with same lenght as arrays V and T_p
 import numpy as np
 
 def C_D(T_p,rho_0,V,S):
-    CD = T_p*(0.5*rho_0*np.square(V)*S)**-1
+    CD = T_p*(0.5*rho_0*np.square(V*0.514444444)*S)**-1
     return CD

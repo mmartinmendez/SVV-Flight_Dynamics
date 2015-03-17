@@ -8,7 +8,7 @@ clear()
 import matplotlib.pyplot as plt
 plt.close("all")
 
-import ISA, C_L, C_D, C_L_alpha, C_D_alpha, input, weight, oswaldfactor, Veq
+import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight, oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot
 from Cit_par import*
 from state_space import*
 from numpy import*
@@ -33,18 +33,20 @@ class Main:
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
 #        a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S,self.weights,self.statCLCD[:][8],g)
-        CL = C_L(W,rho0,self.statCLCD[4],S)
+        W = weight.weight(self.W_S,self.weights,self.statCLCD[:,7],g)
+        CL = C_L.C_L(W,rho0,self.statCLCD[:,3],S)
         T_p = 1200*np.ones(6)#Temporary value
-        CD = C_D(T_p,rho0,self.statCLCD[4],S)
-        CD_polyfit = C_LvsC_Dplot(CL,CD)
-        CD0 = C_D_0(CD_polyfit)
+        CD = C_D.C_D(T_p,rho0,self.statCLCD[:,3],S)
+        CD_polyfit = C_LvsC_Dplot.C_LvsC_Dplot(CL,CD)
+        CD0 = C_D_0.C_D_0(CD_polyfit)
         print 'CD0 = ' + str(CD0)
-        CD2_polyfit = C_L2vsC_Dplot(CL,CD)
-        e = oswaldfactor(CD2_polyfit,A)
+        CD2_polyfit = C_L2vsC_Dplot.C_L2vsC_Dplot(CL,CD)
+        e = oswaldfactor.oswaldfactor(CD2_polyfit,A)
         print 'e = ' + str(e)
-        CLa_polyfit = CL_alpha(self.statCLCD[5],CL)
-        CDa_polyfit = CD_alpha(self.statCLCD[5],CD)
+        CLa_polyfit = C_L_alpha.CL_alpha(self.statCLCD[:,4],CL)
+        CDa_polyfit = C_D_alpha.CD_alpha(self.statCLCD[:,4],CD)
+        print 'CLalpha = ' + str(CLa_polyfit[1])
+        print 'CDalpha = ' + str(CDa_polyfit[1])
         print 'First Measurement Series Calculation: End'
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
@@ -82,7 +84,7 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-  #  ap.firstMeasurementSeries()
-  #  ap.secondMeasurementSeries()
-    ap.dynamicMeasurementSeries()
+    ap.firstMeasurementSeries()
+    #ap.secondMeasurementSeries()
+    #ap.dynamicMeasurementSeries()
 

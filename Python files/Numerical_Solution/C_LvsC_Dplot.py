@@ -15,7 +15,8 @@ def C_LvsC_Dplot(C_L,C_D,value = None):
         raise IOError("arrays C_L and C_D not of equal lenght")
     CD_polyfit = np.polyfit(C_L,C_D,2)
     CD_polyfit = np.poly1d(CD_polyfit)
-    x = np.linspace(C_L[0]-1,C_L[-1],100)
+    x = np.linspace(min(C_L),max(C_L),100)
+    plt.figure()
     plt.plot(C_D,C_L,'.',CD_polyfit(x),x,'-')
     plt.show()
     if value == None:
