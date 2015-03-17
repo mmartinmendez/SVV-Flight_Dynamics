@@ -7,9 +7,12 @@ def C_L2vsC_Dplot(C_L,C_D,value = None):
     C_L2 = np.square(C_L)
     CD2_ployfit = np.polyfit(C_L2,C_D,1)
     CD2_ployfit = np.poly1d(CD2_ployfit)
-    x = np.linspace(C_L2[0]-1,C_L2[-1],100)
+    x = np.linspace(min(C_L2),max(C_L2),100)
     plt.figure()
     plt.plot(C_D,C_L2,'.',CD2_ployfit(x),x,'-')
+    plt.xlabel(r'$C_D$')
+    plt.ylabel(r'$C_L^2$')
+    plt.title(r"$C_L^2 \  -\ C_D$")
     plt.show()
     if value == None:
         return CD2_ployfit

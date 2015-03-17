@@ -2,7 +2,7 @@ __author__ = 'myth'
 
 from numpy import*
 
-def inputFile(filename1,filename2,filename3,filename4,filename5):
+def inputFile(filename1,filename2,filename3,filename4,filename5,filename6):
 
     # Filename1 -- with all the aircraft parameters -- Dynamic measurements
     results_data = []
@@ -18,7 +18,9 @@ def inputFile(filename1,filename2,filename3,filename4,filename5):
     results_shift = loadtxt(filename3,skiprows=2,usecols=(0,2,3,4,5,6,7,8,9,10,11))
     results_CL = loadtxt(filename4,skiprows=3,usecols=(0,2,3,4,5,6,7,8,9))
     results_det = loadtxt(filename5,skiprows=3,usecols=(0,2,3,4,5,6,7,8,9,10,11))
-    return new_results_data , results_W, results_shift, results_CL, results_det
+    results_thrust = loadtxt(filename6)
+    results_thrust = transpose(results_thrust)
+    return new_results_data , results_W, results_shift, results_CL, results_det, results_thrust
 
 def convert( someList ):
     for item in someList:
