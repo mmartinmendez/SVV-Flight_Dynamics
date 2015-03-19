@@ -101,22 +101,24 @@ class Main:
         print r'$\zeta$ = ',result[3]
         print r'w$_0$ = ',result[4]
 
+
         #Response values and plots
         #u
         sys2 = stateSpaceSymmetric(1)
         T,U1,U2 = produce_datapoints.points(self.data[2:],19)
-        tas = TAS.TAS(P_0,lam,hp0,Temp0,g,R,gamma,U2)
-        [t,y1,x] = dynamic_response.dynamic_response1(sys2,T,U1)
+        [y1,t,x] = dynamic_response.dynamic_response(sys2,T,U1)
         sys3 = stateSpaceSymmetric(2)
         T,U3,U4 = produce_datapoints.points(self.data[2:],0)
-        [t,y2,x2] = dynamic_response.dynamic_response1(sys3,T,U3)
+        [y2,t,x] = dynamic_response.dynamic_response(sys3,T,U3)
         sys4 = stateSpaceSymmetric(3)
         T,U5,U6 = produce_datapoints.points(self.data[2:],12)
-        [t,y3,x3] = dynamic_response.dynamic_response1(sys4,T,U5)
+        [y3,t,x] = dynamic_response.dynamic_response(sys4,T,U5)
         sys5 = stateSpaceSymmetric(4)
         T,U7,U8 = produce_datapoints.points(self.data[2:],14)
-        [t,y4,x4] = dynamic_response.dynamic_response1(sys5,T,U7)
-        dynamic_response_plot.plot_shortPeriod(t,y1,U2,y2,U4,y3,U6,y4,U8)
+        [y4,t,x] = dynamic_response.dynamic_response(sys5,T,U7)
+
+        dynamic_response_plot.plot_shortPeriod(T,y1,U2,y2,U4,y3,U6,y4,U8)
+
         #dynamic_response_plot.plot_shortPeriod(t,y)
 
         print 'Short Period Calculation: End'
@@ -272,8 +274,8 @@ def init():
 if __name__== "__main__":
     ap = init()
     input = raw_input('Enter input')
-    ap.firstMeasurementSeries()
-    ap.secondMeasurementSeries()
+   # ap.firstMeasurementSeries()
+   # ap.secondMeasurementSeries()
 
     if input == '1':
         ap.shortPeriod()
