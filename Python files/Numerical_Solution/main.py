@@ -30,6 +30,7 @@ class Main:
         print 'First Measurement Series Calculation: Begin'
 #        a,b,c = ISA.aparameters(self.h1)
         W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
+        print W
         CL = C_L.C_L(W,rho0,self.statCLCD[:,3],S)
         CD = C_D.C_D(self.thrust[:6,0],rho0,self.statCLCD[:,3],S)
         CD_polyfit = C_LvsC_Dplot.C_LvsC_Dplot(CL,CD)
