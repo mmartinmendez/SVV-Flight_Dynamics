@@ -4,6 +4,7 @@
 from math import*
 from Cit_par import*
 
+
 def aparameters(h1):
 
     """
@@ -13,6 +14,10 @@ def aparameters(h1):
 
     #sea level conditions
     p0 = 101325.0
+
+    rho0   = 1.2250          # air density at sea level [kg/m**3]
+    lam = -0.0065         # temperature gradient in ISA [K/m]
+    Temp0  = 288.15          # temperature at sea level in ISA [K]
 
     #11000m conditions
     T11000 = 216.65
