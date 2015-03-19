@@ -10,7 +10,7 @@ plt.close("all")
 
 
 import ISA, C_L, C_D,C_D_0, C_L_alpha,C_m_alpha,eqde,eqfe,FevsVplot,C_m_delta, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot
-import eigenvalues, Response_variables, dynamic_response, dynamic_response_plot, produce_datapoints
+import eigenvalues, Response_variables, dynamic_response, dynamic_response_plot, produce_datapoints, TAS
 
 from Cit_par import*
 from state_space import*
@@ -105,6 +105,7 @@ class Main:
         #u
         sys2 = stateSpaceSymmetric(1)
         T,U1,U2 = produce_datapoints.points(self.data[2:],19)
+        TAS = TAS.TAS(P_0,lam,hp0,Temp0,g,R,gamma,U2)
         [t,y,x] = dynamic_response.dynamic_response1(sys2,T,U1)
         sys3 = stateSpaceSymmetric(2)
         T,U3,U4 = produce_datapoints.points(self.data[2:],0)
