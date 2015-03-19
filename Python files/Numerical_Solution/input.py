@@ -19,13 +19,8 @@ def inputFile(filename1,filename2,filename3,filename4,filename5,filename6,filena
     results_CL = loadtxt(filename4,skiprows=3,usecols=(0,2,3,4,5,6,7,8,9))
     results_det = loadtxt(filename5,skiprows=3,usecols=(0,2,3,4,5,6,7,8,9,10,11))
     results_thrust = loadtxt(filename6)
-    results_thrust = transpose(results_thrust)
     results_fuelmoment = loadtxt(filename7)
     results_fuelmoment = transpose(vstack((results_fuelmoment[:len(results_fuelmoment)/2],results_fuelmoment[len(results_fuelmoment)/2:])))
-<<<<<<< HEAD
-=======
-    #print results_fuelmoment
->>>>>>> origin/master
     results_arm = loadtxt(filename8)
     return new_results_data , results_W, results_shift, results_CL, results_det, results_thrust, results_fuelmoment, results_arm
 

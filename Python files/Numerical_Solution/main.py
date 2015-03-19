@@ -9,10 +9,11 @@ import matplotlib.pyplot as plt
 plt.close("all")
 
 
-import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot, eigenvalues, Response_variables
+import ISA, C_L, C_D,C_D_0, C_L_alpha,C_m_alpha,eqde,eqfe,FevsVplot,C_m_delta, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot, eigenvalues, Response_variables,Tp
 from Cit_par import*
 from state_space import*
 from numpy import*
+from math import *
 
 class Main:
     def __init__(self,T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8):                 #Initializes all the varibles needed
@@ -26,14 +27,15 @@ class Main:
         print 'First Measurement Series Calculation: Begin'
 
 #        a,b,c = ISA.aparameters(self.h1)
+#===============old=============
+#        W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
+#        CL = C_L.C_L(W,rho0,self.statCLCD[:,3]/1.94384449,S)
+#        CD = C_D.C_D(self.thrust[0:12:2,:],rho0,self.statCLCD[:,3]/1.94384449,S)
+#===============new=============        
         W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
         Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
-        print Ve
-        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)#
-        print CL
-        CD = C_D.C_D(self.thrust[:6,0],rho0,Ve,S)
-        print CD
-
+        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)
+        CD = C_D.C_D(self.thrust[0:12:2,:],rho0,Ve,S)
         CD_polyfit = C_LvsC_Dplot.C_LvsC_Dplot(CL,CD)
         CD2_polyfit = C_L2vsC_Dplot.C_L2vsC_Dplot(CL,CD)
         CD0 = C_D_0.C_D_0(CD2_polyfit)
@@ -42,20 +44,27 @@ class Main:
         print 'e = ' + str(e)
         CLa_polyfit = C_L_alpha.CL_alpha(self.statCLCD[:,4],CL)
         CDa_polyfit = C_D_alpha.CD_alpha(self.statCLCD[:,4],CD)
-        print 'CLalpha = ' + str(CLa_polyfit[1])
-        print 'CDalpha = '
-        print CDa_polyfit
+        print 'CLalpha = ' + str(CLa_polyfit[1]*180/pi)
         print 'First Measurement Series Calculation: End'
 
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
         print 'Second Measurement Series Calculation: Begin'
         #print self.statDEV
-        W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
-        Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
-        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)
-        #dxcg = x_cg.x_cg(self.W_S,self.weights,self.statCG[:,-2],self.moment,self.arm,W,g)
-        #delta_evsVplot.delta_evsVplot(self.statDEV[:,5],Ve)
-        
+        WCG = weight.weight1(self.W_S,self.weights,self.statCG[:,-2],g)
+        VeCG = Veq.Veq(self.statCG[:,3],WCG,self.W_S)
+        CL = C_L.C_L(np.ones(len(VeCG))*self.W_S,rho0,VeCG,S)
+        dxcg = x_cg.x_cg(self.W_S,self.weights,self.statCG[:,-2],self.moment,self.arm,WCG,g)
+        dde = (self.statCG[0,5]-self.statCG[1,5])*pi/180
+        Cmdelta = C_m_delta.C_m_delta((CL[0]+CL[1])/2,dxcg,dde,c)
+        print 'C_m_delta_e = ' + str(Cmdelta)
+        W = weight.weight1(self.W_S,self.weights,self.statDEV[:,-2],g)
+        Ve = Veq.Veq(self.statDEV[:,3],W,self.W_S)
+        eqdelta = eqde.eqde(self.statDEV[:,5],Cmdelta,self.thrust[12:-4,:],CmTc,Ve,S)
+        deltae_polyfit = delta_evsVplot.delta_evsVplot(eqdelta,Ve)
+        eqFe = eqfe.eqfe(self.statDEV[:,7],self.W_S,W)
+        Fe_polyfit = FevsVplot.FevsVplot(eqFe,Ve)
+        Cma = C_m_alpha.C_m_alpha(self.statDEV[:,4],eqdelta,Cmdelta)
+        print 'C_m_alpha = ' + str(Cma)
         print 'Second Measurement Series Calculation: End'
 
 
@@ -194,7 +203,7 @@ def init():
     filename3 = 'stationary_cg_shift.txt'
     filename4 = 'stationary_CL-CD.txt'
     filename5 = 'stationary_elevator-trim.txt'
-    filename6 = 'stationarythrust.txt'
+    filename6 = 'statthrust.dat'
     filename7 = 'fuel_moments.txt'
     filename8 = 'arm.txt'
     W_S = 60500. #[N]
@@ -203,9 +212,10 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-    input = raw_input('Enter input')
-    #ap.firstMeasurementSeries()
-    #ap.secondMeasurementSeries()
+    #input = raw_input('Enter input')
+    ap.firstMeasurementSeries()
+    ap.secondMeasurementSeries()
+    '''
     if input == '1':
         ap.shortPeriod()
     if input == '2':
@@ -216,6 +226,6 @@ if __name__== "__main__":
         ap.dutchRoll()
     if input == '5':
         ap.aperiodicSpiral()
-
+    '''
 
 
