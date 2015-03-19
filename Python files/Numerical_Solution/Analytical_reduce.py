@@ -83,16 +83,18 @@ for line in data:
     if h_p == 0:
         h_p = 1.0
     
+    T_0I = T_0 + a*(h_p)
+    
     #save to list
-    outs.append([int(h_p),M,T,FFL,FFR,V_e,V_t,p])
+    outs.append([int(h_p),M,T,FFL,FFR,V_e,V_t,p,T_0I])
 
 #----------------------------------------------------Thrustdata is got------------------------------------------------------------------
 
 #Get reduced thrust
 thrust = open('thrusst.txt','w')
 for i in [10000,11000,12100,13100,14200,15800,18500,21650,22200,23400,24200,24850,25600,26600,28100]:
-    thrust.write(str(outs[i][0])+'\t'+str(outs[i][1])+'\t'+str(abs(outs[i][2]-T_0))+'\t'+str(outs[i][3])+'\t'+str(outs[i][4])+'\n')
-    thrust.write(str(outs[i][0])+'\t'+str(outs[i][1])+'\t'+str(abs(outs[i][2]-T_0))+'\t'+str(0.048)+'\t'+str(0.048)+'\n')
+    thrust.write(str(outs[i][0])+'\t'+str(outs[i][1])+'\t'+str(abs(outs[i][2]-outs[i][8]))+'\t'+str(outs[i][3])+'\t'+str(outs[i][4])+'\n')
+    thrust.write(str(outs[i][0])+'\t'+str(outs[i][1])+'\t'+str(abs(outs[i][2]-outs[i][8]))+'\t'+str(0.048)+'\t'+str(0.048)+'\n')
 thrust.close()
 
 process = subprocess.Popen(['thrust.exe','thrusst.txt'], bufsize = -1 ,stderr = subprocess.PIPE, stdin=subprocess.PIPE, stdout = subprocess.PIPE)
