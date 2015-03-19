@@ -32,7 +32,7 @@ class Main:
         W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
         Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
         print Ve
-        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)
+        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)#
         print CL
         CD = C_D.C_D(self.thrust[:6,0],rho0,Ve,S)
         print CD
