@@ -27,10 +27,13 @@ class Main:
 
 #        a,b,c = ISA.aparameters(self.h1)
         W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
-        print W
+        Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
+        print Ve
+        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)#
+        print CL
+        CD = C_D.C_D(self.thrust[:6,0],rho0,Ve,S)
+        print CD
 
-        CL = C_L.C_L(W,rho0,self.statCLCD[:,3],S)
-        CD = C_D.C_D(self.thrust[:6,0],rho0,self.statCLCD[:,3],S)
         CD_polyfit = C_LvsC_Dplot.C_LvsC_Dplot(CL,CD)
         CD2_polyfit = C_L2vsC_Dplot.C_L2vsC_Dplot(CL,CD)
         CD0 = C_D_0.C_D_0(CD2_polyfit)
@@ -47,10 +50,11 @@ class Main:
     def secondMeasurementSeries(self):              # Call all functions needed for calculation in the second measurement series
         print 'Second Measurement Series Calculation: Begin'
         #print self.statDEV
-        W = weight.weight(self.W_S,self.weights,self.statDEV[:,10],g)
-        Ve = Veq.Veq(self.statDEV[:,3],W,self.W_S)
-        dxcg = x_cg.x_cg(self.W_S,self.weights,self.statCG[:,-2],self.moment,self.arm,W,g)
-        delta_evsVplot.delta_evsVplot(self.statDEV[:,5],Ve)
+        W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
+        Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
+        CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)
+        #dxcg = x_cg.x_cg(self.W_S,self.weights,self.statCG[:,-2],self.moment,self.arm,W,g)
+        #delta_evsVplot.delta_evsVplot(self.statDEV[:,5],Ve)
         
         print 'Second Measurement Series Calculation: End'
 
@@ -199,7 +203,6 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-
     input = raw_input('Enter input')
     #ap.firstMeasurementSeries()
     #ap.secondMeasurementSeries()
@@ -213,5 +216,6 @@ if __name__== "__main__":
         ap.dutchRoll()
     if input == '5':
         ap.aperiodicSpiral()
+
 
 
