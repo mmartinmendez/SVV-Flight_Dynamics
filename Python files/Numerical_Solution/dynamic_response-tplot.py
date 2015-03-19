@@ -1,33 +1,116 @@
 import matplotlib.pyplot as plt
 
-def uvstplot(u,t):
-    #plot the graph, keep returning 0
-    return 0
+def plot_shortPeriod(t,y):
+    plt.figure(1)
+    plt.subplot(411)
+    plt.plot(t[0],y[0])
+    plt.xlabel('t')
+    plt.ylabel('u')
 
-def alphavstplot(alpha,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(412)
+    plt.plot(t[1],y[1])
+    plt.xlabel('t')
+    plt.ylabel(r'$\alpha$')
 
-def thetavstplot(theta,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(413)
+    plt.plot(t[2],y[2])
+    plt.xlabel('t')
+    plt.ylabel(r'$\theta$')
 
-def qvstplot(q,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(414)
+    plt.plot(t[3],y[3])
+    plt.xlabel('t')
+    plt.ylabel('q')
+    plt.show()
 
-def betavstplot(beta,t):
-    #plot the graph, keep returning 0
-    return 0
+def plot_phugoid():
+    plt.figure(1)
+    plt.subplot(411)
+    plt.plot(t[0],y[0])
+    plt.xlabel('t')
+    plt.ylabel('u')
 
-def phivstplot(phi,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(412)
+    plt.plot(t[1],y[1])
+    plt.xlabel('t')
+    plt.ylabel(r'$\alpha$')
 
-def pvstplot(p,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(413)
+    plt.plot(t[2],y[2])
+    plt.xlabel('t')
+    plt.ylabel(r'$\theta$')
 
-def rvstplot(r,t):
-    #plot the graph, keep returning 0
-    return 0
+    plt.subplot(414)
+    plt.plot(t[3],y[3])
+    plt.xlabel('t')
+    plt.ylabel('q')
+    plt.show()
+
+def plot_aperiodicRoll():
+    plt.figure(1)
+    plt.subplot(411)
+    plt.plot(t[0],y[0])
+    plt.xlabel('t')
+    plt.ylabel(r'$\beta$')
+
+    plt.subplot(412)
+    plt.plot(t[1],y[1])
+    plt.xlabel('t')
+    plt.ylabel(r'$\varphi$')
+
+    plt.subplot(413)
+    plt.plot(t[2],y[2])
+    plt.xlabel('t')
+    plt.ylabel('p')
+
+    plt.subplot(414)
+    plt.plot(t[3],y[3])
+    plt.xlabel('t')
+    plt.ylabel('r')
+    plt.show()
+
+def plot_dutchRoll():
+    plt.figure(1)
+    plt.subplot(411)
+    plt.plot(t[0],y[0])
+    plt.xlabel('t')
+    plt.ylabel(r'$\beta$')
+
+    plt.subplot(412)
+    plt.plot(t[1],y[1])
+    plt.xlabel('t')
+    plt.ylabel(r'$\varphi$')
+
+    plt.subplot(413)
+    plt.plot(t[2],y[2])
+    plt.xlabel('t')
+    plt.ylabel('p')
+
+    plt.subplot(414)
+    plt.plot(t[3],y[3])
+    plt.xlabel('t')
+    plt.ylabel('r')
+    plt.show()
+
+def plot_aperiodicSpiral():
+    plt.figure(1)
+    plt.subplot(411)
+    plt.plot(t[0],y[0])
+    plt.xlabel('t')
+    plt.ylabel(r'$\beta$')
+
+    plt.subplot(412)
+    plt.plot(t[1],y[1])
+    plt.xlabel('t')
+    plt.ylabel(r'$\varphi$')
+
+    plt.subplot(413)
+    plt.plot(t[2],y[2])
+    plt.xlabel('t')
+    plt.ylabel('p')
+
+    plt.subplot(414)
+    plt.plot(t[3],y[3])
+    plt.xlabel('t')
+    plt.ylabel('r')
+    plt.show()

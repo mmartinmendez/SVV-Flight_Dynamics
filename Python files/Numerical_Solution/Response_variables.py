@@ -1,6 +1,6 @@
 from numpy import*
 from math import*
-from Cit_par import*
+from n_Cit_par import*
 
 def Response(eigenvalues):
     final = []

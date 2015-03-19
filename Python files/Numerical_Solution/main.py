@@ -68,6 +68,8 @@ class Main:
 
         result = Response_variables.Response(eigen)
 
+
+
      #   short_period()
         print 'Dynamic Measurement Series Calculation: End'
 
