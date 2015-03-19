@@ -18,22 +18,14 @@ from numpy import*
 from math import *
 
 class Main:
-    def __init__(self,T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8):                 #Initializes all the varibles needed
+    def __init__(self,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8):                 #Initializes all the varibles needed
         print 'initializing............'
-        self.T_p=T_p
         self.W_S=W_S
         self.data,self.weights,self.statCG,self.statCLCD,self.statDEV,self.thrust,self.moment,self.arm=input.inputFile(filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
         #names for arrays of files: statCLCD, statDEV (for elevator-trim) and statCG (for cg_shift)
 
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
-        print 'First Measurement Series Calculation: Begin'
-
-#        a,b,c = ISA.aparameters(self.h1)
-#===============old=============
-#        W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
-#        CL = C_L.C_L(W,rho0,self.statCLCD[:,3]/1.94384449,S)
-#        CD = C_D.C_D(self.thrust[0:12:2,:],rho0,self.statCLCD[:,3]/1.94384449,S)
-#===============new=============        
+        print 'First Measurement Series Calculation: Begin'     
         W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
         Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
         CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)
@@ -256,7 +248,6 @@ def init():
 
     :rtype : object
     """
-    T_p=1200.
     filename1 = 'FTISxprt-20150305_144557.txt'
     filename2 = 'weights.txt'
     filename3 = 'stationary_cg_shift.txt'
@@ -265,8 +256,8 @@ def init():
     filename6 = 'statthrust.dat'
     filename7 = 'fuel_moments.txt'
     filename8 = 'arm.txt'
-    W_S = 60500. #[N]
-    ap = Main(T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
+    W_S = 9170/0.224808943 #[N]
+    ap = Main(W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
     return ap
 
 if __name__== "__main__":
