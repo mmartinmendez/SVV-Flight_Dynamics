@@ -7,7 +7,7 @@ from control.matlab import*
 
 
 
-def stateSpaceSymmetric():
+def stateSpaceSymmetric(val):
     C1=matrix([[-2*muc,0,0,0],
                [0,CZadot-2*muc,0,0],
                [0,0,-1.,0],
@@ -21,16 +21,22 @@ def stateSpaceSymmetric():
               [0],
               [Cmde]])
 
-
     A=-C1.I * C2
     B=-C1.I * C3
-    C=matrix([0,1,0,0])
+    if val==1:
+        C=matrix([1,0,0,0])
+    elif val==2:
+        C=matrix([0,1,0,0])
+    elif val==3:
+        C=matrix([0,0,1,0])
+    elif val==4:
+        C=matrix([0,0,0,1])
     D=matrix([0])
     sys1 = ss(A,B,C,D)
     return sys1
 
 
-def stateSpaceAsymmetric():
+def stateSpaceAsymmetric(val):
     C1=matrix([[CYbdot-2*mub,0,0,0],
                     [0,-1/2.,0,0],
                     [0,0,-4*mub*KX2,4*mub*KXZ],
@@ -46,7 +52,14 @@ def stateSpaceAsymmetric():
 
     A=-C1.I * C2
     B=-C1.I * C3
-    C=matrix([0,1,0,0])
+    if val==1:
+        C=matrix([1,0,0,0])
+    elif val==2:
+        C=matrix([0,1,0,0])
+    elif val==3:
+        C=matrix([0,0,1,0])
+    elif val==4:
+        C=matrix([0,0,0,1])
     D=matrix([0,0])
     sys2 = ss(A,B,C,D)
     return sys2
