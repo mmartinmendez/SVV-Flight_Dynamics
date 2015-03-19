@@ -15,12 +15,8 @@ from state_space import*
 from numpy import*
 
 class Main:
-    def __init__(self,h,p,V,T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8):                 #Initializes all the varibles needed
+    def __init__(self,T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8):                 #Initializes all the varibles needed
         print 'initializing............'
-        self.h1=h
-        self.p=p
-        self.S=S
-        self.V=V
         self.T_p=T_p
         self.W_S=W_S
         self.data,self.weights,self.statCG,self.statCLCD,self.statDEV,self.thrust,self.moment,self.arm=input.inputFile(filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
@@ -28,8 +24,7 @@ class Main:
 
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
-#        a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
+        W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
         CL = C_L.C_L(W,rho0,self.statCLCD[:,3],S)
         CD = C_D.C_D(self.thrust[:6,0],rho0,self.statCLCD[:,3],S)
         CD_polyfit = C_LvsC_Dplot.C_LvsC_Dplot(CL,CD)
@@ -55,31 +50,136 @@ class Main:
         
         print 'Second Measurement Series Calculation: End'
 
-    def dynamicMeasurementSeries(self):             # Call all functions needed for calculation in the dynamic measurement series
-        print 'Dynamic Measurement Series Calculation: Begin'
-        #W = weight.weight(self.W_S,self.weights,self.data[5:7],g)
+
+    def shortPeriod(self):             # Call all functions needed for calculation in the dynamic measurement series
+        print 'Short Period Calculation: Begin'
+        W = weight.weight(self.W_S,self.weights,self.data[2:],g)
+        open('input.txt', 'w').close()
+        file = open('input.txt','w')
+        file.write(str(self.data[29949][17]))
+        file.write('\n')
+        file.write(str(self.data[29949][19]))
+        file.write('\n')
+        file.write(str(self.data[29949][0]))
+        file.write('\n')
+        file.write(str(self.data[29949][12]))
+        file.write('\n')
+        file.write(str((W[30191])/g))
+        file.close()
+
+        execfile('Cit_par.py')
+
         sys1 = stateSpaceSymmetric()
         eig_symmetric = array(eigenvalues.eigenvalues(sys1))
-        sys2 = stateSpaceAsymmetric()
-        eig_asymmetric = array(eigenvalues.eigenvalues(sys2))
-        eigen = append(eig_symmetric,eig_asymmetric)
-        eigen.tolist()
+        result = Response_variables.Response(eig_symmetric)
+        print m,hp0,V0,rho,muc,mub
+        print result
+        print 'Short Period Calculation: End'
 
-        result = Response_variables.Response(eigen)
+    def phugoid(self):             # Call all functions needed for calculation in the dynamic measurement series
+        print 'Phugoid Calculation: Begin'
+        W = weight.weight(self.W_S,self.weights,self.data[2:],g)
+        open('input.txt', 'w').close()
+        file = open('input.txt','w')
+        file.write(str(self.data[30630][17]))
+        file.write('\n')
+        file.write(str(self.data[30630][19]))
+        file.write('\n')
+        file.write(str(self.data[30630][0]))
+        file.write('\n')
+        file.write(str(self.data[30630][12]))
+        file.write('\n')
+        file.write(str(W[31636]))
+        file.close()
 
+        execfile('Cit_par.py')
 
+        sys1 = stateSpaceSymmetric()
+        eig_symmetric = array(eigenvalues.eigenvalues(sys1))
+        eig_symmetric.tolist()
+        result = Response_variables.Response(eig_symmetric)
+        print m,hp0,V0,rho
+        print result[1]
+        print 'Phugoid Calculation: End'
 
-     #   short_period()
-        print 'Dynamic Measurement Series Calculation: End'
+    def aperiodicRoll(self):             # Call all functions needed for calculation in the dynamic measurement series
+        print 'Aperiodic Roll Calculation: Begin'
+        W = weight.weight(self.W_S,self.weights,self.data[2:],g)
+        open('input.txt', 'w').close()
+        file = open('input.txt','w')
+        file.write(str(self.data[29100][17]))
+        file.write('\n')
+        file.write(str(self.data[29100][19]))
+        file.write('\n')
+        file.write(str(self.data[29100][0]))
+        file.write('\n')
+        file.write(str(self.data[29100][12]))
+        file.write('\n')
+        file.write(str(W[29312]))
+        file.close()
+
+        sys1 = stateSpaceAsymmetric()
+        eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
+        eig_asymmetric.tolist()
+        result = Response_variables.Response(eig_asymmetric)
+        print m,hp0,V0,rho
+        print result[1]
+        print 'Aperiodic Roll Calculation: End'
+
+    def dutchRoll(self):             # Call all functions needed for calculation in the dynamic measurement series
+        print 'Dutch Roll Calculation: Begin'
+        W = weight.weight(self.W_S,self.weights,self.data[2:],g)
+        open('input.txt', 'w').close()
+        file = open('input.txt','w')
+        file.write(str(self.data[33000][17]))
+        file.write('\n')
+        file.write(str(self.data[33000][19]))
+        file.write('\n')
+        file.write(str(self.data[33000][0]))
+        file.write('\n')
+        file.write(str(self.data[33000][12]))
+        file.write('\n')
+        file.write(str(W[33313]))
+        file.close()
+
+        sys1 = stateSpaceAsymmetric()
+        eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
+        eig_asymmetric.tolist()
+        result = Response_variables.Response(eig_asymmetric)
+        print m,hp0,V0,rho
+        print result[1]
+        print 'Dutch Roll Calculation: End'
+
+    def aperiodicSpiral(self):             # Call all functions needed for calculation in the dynamic measurement series
+        print 'Aperiodic Spiral Calculation: Begin'
+        W = weight.weight(self.W_S,self.weights,self.data[2:],g)
+        open('input.txt', 'w').close()
+        file = open('input.txt','w')
+        file.write(str(self.data[35580][17]))
+        file.write('\n')
+        file.write(str(self.data[35580][19]))
+        file.write('\n')
+        file.write(str(self.data[35580][0]))
+        file.write('\n')
+        file.write(str(self.data[35580][12]))
+        file.write('\n')
+        file.write(str(W[37100]))
+        file.close()
+
+        sys1 = stateSpaceAsymmetric()
+        eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
+        eig_asymmetric.tolist()
+        result = Response_variables.Response(eig_asymmetric)
+        print m,hp0,V0,rho
+        print result[1]
+        print 'Aperiodic Spiral Calculation: End'
+
 
 def init():
     """
 
     :rtype : object
     """
-    h=0.
-    p=12000.
-    V=100.
     T_p=1200.
     filename1 = 'FTISxprt-20150305_144557.txt'
     filename2 = 'weights.txt'
@@ -90,14 +190,24 @@ def init():
     filename7 = 'fuel_moments.txt'
     filename8 = 'arm.txt'
     W_S = 60500. #[N]
-    ap = Main(h,p,V,T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
+    ap = Main(T_p,W_S,filename1,filename2,filename3,filename4,filename5,filename6,filename7,filename8)
     return ap
 
 if __name__== "__main__":
     ap = init()
 
-    ap.firstMeasurementSeries()
-    ap.secondMeasurementSeries()
-    #ap.dynamicMeasurementSeries()
+    input = raw_input('Enter input')
+    #ap.firstMeasurementSeries()
+    #ap.secondMeasurementSeries()
+    if input == '1':
+        ap.shortPeriod()
+    if input == '2':
+        ap.phugoid()
+    if input == '3':
+        ap.aperiodicRoll()
+    if input == '4':
+        ap.dutchRoll()
+    if input == '5':
+        ap.aperiodicSpiral()
 
 

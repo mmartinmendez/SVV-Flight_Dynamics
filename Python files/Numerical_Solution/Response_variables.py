@@ -1,6 +1,6 @@
 from numpy import*
 from math import*
-from n_Cit_par import*
+from Cit_par import*
 
 def Response(eigenvalues):
     final = []
@@ -8,14 +8,14 @@ def Response(eigenvalues):
         result = []
         if eigenvalues[i].imag!=0:
             result.append(eigenvalues[i])
-            result.append((2*pi)/eigenvalues[i].imag*c/V)
-            result.append(log(0.5)/eigenvalues[i].real*c/V)
+            result.append((2*pi)/eigenvalues[i].imag*c/V0)
+            result.append(log(0.5)/eigenvalues[i].real*c/V0)
             result.append(-eigenvalues[i].real/(sqrt((eigenvalues[i].real)**2+(eigenvalues[i].imag)**2)))
-            result.append(sqrt((eigenvalues[i].real)**2+(eigenvalues[i].imag)**2)*V/c)
+            result.append(sqrt((eigenvalues[i].real)**2+(eigenvalues[i].imag)**2)*V0/c)
         else:
             result.append(eigenvalues[i])
             result.append(0)
-            result.append(log(0.5)/eigenvalues[i].real*c/V)
+            result.append(log(0.5)/eigenvalues[i].real*c/V0)
             result.append(0)
             result.append(0)
         final.append(result)

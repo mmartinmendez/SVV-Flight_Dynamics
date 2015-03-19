@@ -1,10 +1,9 @@
 
 #put in comments!
 #==============+==============
-from numpy import matrix,linalg,array
-from n_Cit_par import*
+from numpy import matrix
+from Cit_par import*
 from control.matlab import*
-import eigenvalues,Response_variables
 
 
 
@@ -22,6 +21,7 @@ def stateSpaceSymmetric():
               [0],
               [Cmde]])
 
+
     A=-C1.I * C2
     B=-C1.I * C3
     C=matrix([0,1,0,0])
@@ -31,7 +31,7 @@ def stateSpaceSymmetric():
 
 
 def stateSpaceAsymmetric():
-    C1=b/V*matrix([[CYbdot-2*mub,0,0,0],
+    C1=matrix([[CYbdot-2*mub,0,0,0],
                     [0,-1/2.,0,0],
                     [0,0,-4*mub*KX2,4*mub*KXZ],
                     [Cnbdot,0,4*mub*KXZ,-4*mub*KZ2]])
