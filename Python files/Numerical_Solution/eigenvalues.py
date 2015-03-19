@@ -4,5 +4,4 @@ from numpy import linalg
 def eigenvalues(sys):
     [a,b,c,d] = ssdata(sys)
     eig = linalg.eigvals(a)
-    print eig
     return eig

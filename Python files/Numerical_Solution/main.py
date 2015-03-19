@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 plt.close("all")
 
 
-import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot, eigenvalues, Response_variables
+import ISA, C_L, C_D,C_D_0, C_L_alpha, C_D_alpha, input, weight,x_cg , oswaldfactor, Veq, C_LvsC_Dplot, C_L2vsC_Dplot, delta_evsVplot
+import eigenvalues, Response_variables, dynamic_response, dynamic_response_plot, produce_datapoints
 from Cit_par import*
 from state_space import*
 from numpy import*
@@ -75,13 +76,38 @@ class Main:
         file.write(str((W[30191])/g))
         file.close()
 
-        execfile('Cit_par.py')
 
-        sys1 = stateSpaceSymmetric()
+        sys1 = stateSpaceSymmetric(1)
         eig_symmetric = array(eigenvalues.eigenvalues(sys1))
-        result = Response_variables.Response(eig_symmetric)
-        print m,hp0,V0,rho,muc,mub
-        print result
+        eig_symmetric = eig_symmetric[0]
+        result = Response_variables.Response_symmetric(eig_symmetric)
+        print 'M = ',m
+        print 'h = ',hp0
+        print 'V = ',V0
+        print 'rho = ',rho
+        print 'eig = ',result[0]
+        print 'P = ',result[1]
+        print r'T$_{1/2}$ = ',result[2]
+        print r'$\zeta$ = ',result[3]
+        print r'w$_0$ = ',result[4]
+
+        #Response values and plots
+        #u
+        sys2 = stateSpaceSymmetric(1)
+        T,U1,U2 = produce_datapoints.points(self.data[2:],19)
+        [t,y1,x1] = dynamic_response.dynamic_response(sys2,T,U1)
+        sys3 = stateSpaceSymmetric(2)
+        T,U3,U4 = produce_datapoints.points(self.data[2:],0)
+        [t,y2,x2] = dynamic_response.dynamic_response(sys3,T,U3)
+        sys4 = stateSpaceSymmetric(3)
+        T,U5,U6 = produce_datapoints.points(self.data[2:],12)
+        [t,y3,x3] = dynamic_response.dynamic_response(sys4,T,U5)
+        sys5 = stateSpaceSymmetric(4)
+        T,U7,U8 = produce_datapoints.points(self.data[2:],14)
+        [t,y4,x4] = dynamic_response.dynamic_response(sys5,T,U7)
+        dynamic_response_plot.plot_shortPeriod(t,y1,U2,y2,U4,y3,U6,y4,U8)
+        #dynamic_response_plot.plot_shortPeriod(t,y)
+
         print 'Short Period Calculation: End'
 
     def phugoid(self):             # Call all functions needed for calculation in the dynamic measurement series
@@ -89,25 +115,32 @@ class Main:
         W = weight.weight(self.W_S,self.weights,self.data[2:],g)
         open('input.txt', 'w').close()
         file = open('input.txt','w')
-        file.write(str(self.data[30630][17]))
+        file.write(str(self.data[30629][17]))
         file.write('\n')
-        file.write(str(self.data[30630][19]))
+        file.write(str(self.data[30629][19]))
         file.write('\n')
-        file.write(str(self.data[30630][0]))
+        file.write(str(self.data[30629][0]))
         file.write('\n')
-        file.write(str(self.data[30630][12]))
+        file.write(str(self.data[30629][12]))
         file.write('\n')
-        file.write(str(W[31636]))
+        file.write(str(W[31633]/g))
         file.close()
 
         execfile('Cit_par.py')
 
-        sys1 = stateSpaceSymmetric()
+        sys1 = stateSpaceSymmetric(1)
         eig_symmetric = array(eigenvalues.eigenvalues(sys1))
-        eig_symmetric.tolist()
-        result = Response_variables.Response(eig_symmetric)
-        print m,hp0,V0,rho
-        print result[1]
+        eig_symmetric = eig_symmetric[2]
+        result = Response_variables.Response_symmetric(eig_symmetric)
+        print 'M = ',m
+        print 'h = ',hp0
+        print 'V = ',V0
+        print 'rho = ',rho
+        print 'eig = ',result[0]
+        print 'P = ',result[1]
+        print r'T$_{1/2}$ = ',result[2]
+        print r'$\zeta$ = ',result[3]
+        print r'w$_0$ = ',result[4]
         print 'Phugoid Calculation: End'
 
     def aperiodicRoll(self):             # Call all functions needed for calculation in the dynamic measurement series
@@ -115,23 +148,31 @@ class Main:
         W = weight.weight(self.W_S,self.weights,self.data[2:],g)
         open('input.txt', 'w').close()
         file = open('input.txt','w')
-        file.write(str(self.data[29100][17]))
+        file.write(str(self.data[29099][17]))
         file.write('\n')
-        file.write(str(self.data[29100][19]))
+        file.write(str(self.data[29099][19]))
         file.write('\n')
-        file.write(str(self.data[29100][0]))
+        file.write(str(self.data[29099][0]))
         file.write('\n')
-        file.write(str(self.data[29100][12]))
+        file.write(str(self.data[29099][12]))
         file.write('\n')
-        file.write(str(W[29312]))
+        file.write(str(W[29309]/g))
         file.close()
 
-        sys1 = stateSpaceAsymmetric()
+        sys1 = stateSpaceAsymmetric(1)
         eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
-        eig_asymmetric.tolist()
-        result = Response_variables.Response(eig_asymmetric)
-        print m,hp0,V0,rho
-        print result[1]
+        eig_asymmetric = eig_asymmetric[0]
+        result = Response_variables.Response_Asymmetric(eig_asymmetric)
+        print 'M = ',m
+        print 'h = ',hp0
+        print 'V = ',V0
+        print 'rho = ',rho
+        print 'eig = ',result[0]
+        print 'P = ',result[1]
+        print r'T$_{1/2}$ = ',result[2]
+        print r'$\zeta$ = ',result[3]
+        print r'w$_0$ = ',result[4]
+        print 'Phugoid Calculation: End'
         print 'Aperiodic Roll Calculation: End'
 
     def dutchRoll(self):             # Call all functions needed for calculation in the dynamic measurement series
@@ -139,23 +180,31 @@ class Main:
         W = weight.weight(self.W_S,self.weights,self.data[2:],g)
         open('input.txt', 'w').close()
         file = open('input.txt','w')
-        file.write(str(self.data[33000][17]))
+        file.write(str(self.data[32999][17]))
         file.write('\n')
-        file.write(str(self.data[33000][19]))
+        file.write(str(self.data[32999][19]))
         file.write('\n')
-        file.write(str(self.data[33000][0]))
+        file.write(str(self.data[32999][0]))
         file.write('\n')
-        file.write(str(self.data[33000][12]))
+        file.write(str(self.data[32999][12]))
         file.write('\n')
-        file.write(str(W[33313]))
+        file.write(str(W[33310]/g))
         file.close()
 
-        sys1 = stateSpaceAsymmetric()
+        sys1 = stateSpaceAsymmetric(1)
         eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
-        eig_asymmetric.tolist()
-        result = Response_variables.Response(eig_asymmetric)
-        print m,hp0,V0,rho
-        print result[1]
+        eig_asymmetric = eig_asymmetric[1]
+        result = Response_variables.Response_Asymmetric(eig_asymmetric)
+        print 'M = ',m
+        print 'h = ',hp0
+        print 'V = ',V0
+        print 'rho = ',rho
+        print 'eig = ',result[0]
+        print 'P = ',result[1]
+        print r'T$_{1/2}$ = ',result[2]
+        print r'$\zeta$ = ',result[3]
+        print r'w$_0$ = ',result[4]
+        print 'Phugoid Calculation: End'
         print 'Dutch Roll Calculation: End'
 
     def aperiodicSpiral(self):             # Call all functions needed for calculation in the dynamic measurement series
@@ -163,23 +212,31 @@ class Main:
         W = weight.weight(self.W_S,self.weights,self.data[2:],g)
         open('input.txt', 'w').close()
         file = open('input.txt','w')
-        file.write(str(self.data[35580][17]))
+        file.write(str(self.data[35579][17]))
         file.write('\n')
-        file.write(str(self.data[35580][19]))
+        file.write(str(self.data[35579][19]))
         file.write('\n')
-        file.write(str(self.data[35580][0]))
+        file.write(str(self.data[35579][0]))
         file.write('\n')
-        file.write(str(self.data[35580][12]))
+        file.write(str(self.data[35579][12]))
         file.write('\n')
-        file.write(str(W[37100]))
+        file.write(str(W[37097]/g))
         file.close()
 
-        sys1 = stateSpaceAsymmetric()
+        sys1 = stateSpaceAsymmetric(1)
         eig_asymmetric = array(eigenvalues.eigenvalues(sys1))
-        eig_asymmetric.tolist()
-        result = Response_variables.Response(eig_asymmetric)
-        print m,hp0,V0,rho
-        print result[1]
+        eig_asymmetric = eig_asymmetric[3]
+        result = Response_variables.Response_Asymmetric(eig_asymmetric)
+        print 'M = ',m
+        print 'h = ',hp0
+        print 'V = ',V0
+        print 'rho = ',rho
+        print 'eig = ',result[0]
+        print 'P = ',result[1]
+        print r'T$_{1/2}$ = ',result[2]
+        print r'$\zeta$ = ',result[3]
+        print r'w$_0$ = ',result[4]
+        print 'Phugoid Calculation: End'
         print 'Aperiodic Spiral Calculation: End'
 
 
