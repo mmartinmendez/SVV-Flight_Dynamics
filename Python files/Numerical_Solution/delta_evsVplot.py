@@ -3,14 +3,15 @@ import numpy as np
 
 def delta_evsVplot(delta_e,V, value=None):
     if len(delta_e) != len(V):
-        raise IOError("arrays C_L and C_D not of equal lenght")
+        raise IOError("arrays are not of equal lenght")
 #    Vinv = V**-1
     de_polyfit = np.polyfit(V,delta_e,2)
     de_polyfit = np.poly1d(de_polyfit)
     plt.figure()
     x = np.linspace(min(V),max(V),100)
-#    y = de_polyfit(x)**-1
-#    print de_polyfit(x)
+    plt.xlabel(r'$\delta_e$')
+    plt.ylabel(r'$V_e$')
+    plt.title(r"$\delta_e \  -\ V_e$")
     plt.plot(V,delta_e,'.',x,de_polyfit(x),'-')
     plt.show()
     if value == None:

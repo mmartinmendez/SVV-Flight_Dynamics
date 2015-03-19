@@ -4,6 +4,7 @@ from math import sqrt
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
+import math
 
 P_0 = 101325.
 a = -0.0065
@@ -111,7 +112,7 @@ for line in thrustd:
     i+=1
 thrust.close()
 os.remove('thrusst.txt')
-os.remove('thrust.dat')
+#os.remove('thrust.dat')
 
 #------------------------------------------------------Thrust is got--------------------------------------------------------------------
 #ninth = range(27953,28287)
@@ -155,13 +156,12 @@ de_9 = -0.03 #rad
 
 dde = abs(de_8-de_9)
 
-Cmde = -(1./dde)*(W_OEW+W_p*g_0+(2423-780)*0.4536)/(0.5*S*0.94325*158*158*0.51444*0.514444)*dxcg/2.057
-
+Cmde = -(1./dde)*(W_OEW+W_p*g_0+(2423-780)*0.4536)/(0.5*S*0.94325*158*158*0.51444*0.514444)*dxcg/2.0569
 #------------------------------------------------------Cmde is got----------------------------------------------------------------------
 
 #Reduced elevator deflection
 i = 0
-j = 0
+j = 6
 velist = []
 ddeslist = []
 alphalist = []
@@ -171,8 +171,8 @@ Wflist = []
 Mlist = []
 Relist = []
 for line in data:
-#    if i in [18500,21650,22200,23400,24200,24850,25600]:  #2nd measurement
-    if i in [10000,11000,12100,13100,14200,15800]:     #1st measurement
+    if i in [18500,21650,22200,23400,24200,24850,25600]:  #2nd measurement
+#    if i in [10000,11000,12100,13100,14200,15800]:     #1st measurement
         line = line.strip('\n').split('\t')
         h_p = outs[i][0]
         M = outs[i][1]
@@ -191,7 +191,6 @@ for line in data:
         Re = rho*V_t*c/mu
         #print h_p
         
-        
         ddes = de-CmTc*(Thrs-Thr)/Cmde
         
         velist.append(V_e)
@@ -205,9 +204,7 @@ for line in data:
 
         j+=1
     i+=1
-
 elevalpha = np.polyfit(alphalist,elevlist,1)
-
 relevrve = np.polyfit(velist,ddeslist,2)
 velev = np.poly1d(relevrve)
 
@@ -266,17 +263,12 @@ for i in range(len(velist)):
     #Velist.append(velist[i]*(Wflist[i]*g_0+W_p*g_0+W_OEW)/W_OEW)
     Velist.append(velist[i])
 
-for i in range(6):
+for i in range(7):
     T = Tlist[i]
     CDlist.append(T/(0.5*1.225*Velist[i]*Velist[i]*S))
     CL = (W_OEW/(0.5*1.225*Velist[i]*Velist[i]*S))
-    print Velist[i]*Velist[i]
-    print S
     CLlist.append(CL)
-    CL2list.append(CL*CL)
-print Velist
-print CLlist 
-print CDlist   
+    CL2list.append(CL*CL)  
 cl2cd = np.polyfit(CDlist,CL2list,1)
 cl2cd = np.poly1d(cl2cd)
 

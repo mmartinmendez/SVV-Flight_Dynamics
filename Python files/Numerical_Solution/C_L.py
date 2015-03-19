@@ -1,10 +1,6 @@
 import numpy as np
 
 def C_L(W,rho_0,V,S):
-    #print (0.5*rho_0*np.square(V)*S)
-    print rho_0
-    print np.square(V)
-    print S
     CL = W*(0.5*rho_0*np.square(V)*S)**-1
     return CL
 
