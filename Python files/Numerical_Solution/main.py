@@ -105,16 +105,16 @@ class Main:
         #u
         sys2 = stateSpaceSymmetric(1)
         T,U1,U2 = produce_datapoints.points(self.data[2:],19)
-        [t,y,x] = dynamic_response.dynamic_response1(sys2,T,U1)
+        [t,y1,x] = dynamic_response.dynamic_response1(sys2,T,U1)
         sys3 = stateSpaceSymmetric(2)
         T,U3,U4 = produce_datapoints.points(self.data[2:],0)
-        [y2,t,x2] = dynamic_response.dynamic_response1(sys3,T,U3)
+        [t,y2,x2] = dynamic_response.dynamic_response1(sys3,T,U3)
         sys4 = stateSpaceSymmetric(3)
         T,U5,U6 = produce_datapoints.points(self.data[2:],12)
-        [y3,t,x3] = dynamic_response.dynamic_response1(sys4,T,U5)
+        [t,y3,x3] = dynamic_response.dynamic_response1(sys4,T,U5)
         sys5 = stateSpaceSymmetric(4)
         T,U7,U8 = produce_datapoints.points(self.data[2:],14)
-        [y4,t,x4] = dynamic_response.dynamic_response1(sys5,T,U7)
+        [t,y4,x4] = dynamic_response.dynamic_response1(sys5,T,U7)
         dynamic_response_plot.plot_shortPeriod(t,y1,U2,y2,U4,y3,U6,y4,U8)
         #dynamic_response_plot.plot_shortPeriod(t,y)
 
@@ -270,10 +270,10 @@ def init():
 
 if __name__== "__main__":
     ap = init()
-    #input = raw_input('Enter input')
+    input = raw_input('Enter input')
     ap.firstMeasurementSeries()
     ap.secondMeasurementSeries()
-    '''
+
     if input == '1':
         ap.shortPeriod()
     if input == '2':
@@ -284,6 +284,6 @@ if __name__== "__main__":
         ap.dutchRoll()
     if input == '5':
         ap.aperiodicSpiral()
-    '''
+
 
 
