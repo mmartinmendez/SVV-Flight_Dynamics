@@ -29,7 +29,7 @@ class Main:
     def firstMeasurementSeries(self):   # Call all functions needed for calculation in the first measurement series
         print 'First Measurement Series Calculation: Begin'
 #        a,b,c = ISA.aparameters(self.h1)
-        W = weight.weight(self.W_S,self.weights,self.statCLCD[:,-2],g)
+        W = weight.weight1(self.W_S,self.weights,self.statCLCD[:,-2],g)
         Ve = Veq.Veq(self.statCLCD[:,3],W,self.W_S)
         print Ve
         CL = C_L.C_L(np.ones(len(Ve))*self.W_S,rho0,Ve,S)#
