@@ -15,8 +15,7 @@ def points1(value):
     Input5 = zeros(r)
 
     for i in range(r):
-        Time[i] = value[start][23]
-        start+=1
+        Time[i] = value[start+i][23]
 
     start = 29987
     for j in range(r):
@@ -65,3 +64,4 @@ def points2(y):
         y4[i] = y[i][3]
 
     return y1,y2,y3,y4
+

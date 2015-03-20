@@ -105,6 +105,7 @@ class Main:
         dynamic_response_plot.plot_shortPeriod(t,y1,U1,y2,U2,y3,U3,y4,U4)
 
 
+
         print 'Short Period Calculation: End'
 
     def phugoid(self):             # Call all functions needed for calculation in the dynamic measurement series
