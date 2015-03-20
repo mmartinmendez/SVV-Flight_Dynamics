@@ -12,7 +12,7 @@ hp0    =  1         	  # pressure altitude in the stationary flight condition [m
 V0     =  1         # true airspeed in the stationary flight condition [m/sec]
 alpha0 =  1      	  # angle of attack in the stationary flight condition [rad]
 th0    =  1      	  # pitch angle in the stationary flight condition [rad]
-
+q0     =  0
 # Aircraft mass
 m      =  1        	  # mass [kg]
 
@@ -24,16 +24,17 @@ hp0 = results_data[0]
 V0 = results_data[1]
 alpha0 = results_data[2]
 th0 = results_data[3]
-m = results_data[4]
+q0 = results_data[4]
+m = results_data[5]
 
 # aerodynamic properties
-e      =  0.963751922274           # Oswald factor [ ]
-CD0    =  0.0242883628867           # Zero lift drag coefficient [ ]
-CLa    =  5.37484226789           # Slope of CL-alpha curve [ ]
+e      =  0.598607792739          # Oswald factor [ ]
+CD0    =  0.0268891723086           # Zero lift drag coefficient [ ]
+CLa    =  4.40100457224          # Slope of CL-alpha curve [ ]
 
 # Longitudinal stability
-Cma    =  -0.732594717104           # longitudinal stabilty [ ]
-Cmde   =  -0.934024280588           # elevator effectiveness [ ]
+Cma    =  -0.561377830286           # longitudinal stabilty [ ]
+Cmde   =  -0.825489971065          # elevator effectiveness [ ]
 
 
 
