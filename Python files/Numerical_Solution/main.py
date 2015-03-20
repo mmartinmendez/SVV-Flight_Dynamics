@@ -75,11 +75,13 @@ class Main:
         file.write('\n')
         file.write(str(self.data[29949][12]))
         file.write('\n')
+        file.write(str(self.data[29949][14]))
+        file.write('\n')
         file.write(str((W[30191])/g))
         file.close()
 
 
-        sys1 = stateSpaceSymmetric(1)
+        sys1 = stateSpaceSymmetric()
         eig_symmetric = array(eigenvalues.eigenvalues(sys1))
         eig_symmetric = eig_symmetric[0]
         result = Response_variables.Response_symmetric(eig_symmetric)
@@ -95,23 +97,14 @@ class Main:
 
 
         #Response values and plots
-        #u
-        sys2 = stateSpaceSymmetric(1)
-        T,U1,U2 = produce_datapoints.points(self.data[2:],19)
-        [t,y1,x] = dynamic_response.dynamic_response(sys2,T,U1)
-        sys3 = stateSpaceSymmetric(2)
-        T,U3,U4 = produce_datapoints.points(self.data[2:],0)
-        [t,y2,x] = dynamic_response.dynamic_response(sys3,T,U3)
-        sys4 = stateSpaceSymmetric(3)
-        T,U5,U6 = produce_datapoints.points(self.data[2:],12)
-        [t,y3,x] = dynamic_response.dynamic_response(sys4,T,U5)
-        sys5 = stateSpaceSymmetric(4)
-        T,U7,U8 = produce_datapoints.points(self.data[2:],14)
-        [t,y4,x] = dynamic_response.dynamic_response(sys5,T,U7)
 
-        dynamic_response_plot.plot_shortPeriod(T,y1,U2,y2,U4,y3,U6,y4,U8)
+        sys2 = stateSpaceSymmetric()
+        T,U1,U2,U3,U4,I = produce_datapoints.points1(self.data[2:])
+        [t,y,x] = dynamic_response.dynamic_response(sys2,T,I)
+        y1,y2,y3,y4 = produce_datapoints.points2(y)
+        dynamic_response_plot.plot_shortPeriod(t,y1,U1,y2,U2,y3,U3,y4,U4)
 
-        #dynamic_response_plot.plot_shortPeriod(t,y)
+
 
         print 'Short Period Calculation: End'
 
@@ -128,12 +121,12 @@ class Main:
         file.write('\n')
         file.write(str(self.data[30629][12]))
         file.write('\n')
+        file.write(str(self.data[30629][14]))
+        file.write('\n')
         file.write(str(W[31633]/g))
         file.close()
 
-        execfile('Cit_par.py')
-
-        sys1 = stateSpaceSymmetric(1)
+        sys1 = stateSpaceSymmetric()
         eig_symmetric = array(eigenvalues.eigenvalues(sys1))
         eig_symmetric = eig_symmetric[2]
         result = Response_variables.Response_symmetric(eig_symmetric)
@@ -146,7 +139,17 @@ class Main:
         print r'T$_{1/2}$ = ',result[2]
         print r'$\zeta$ = ',result[3]
         print r'w$_0$ = ',result[4]
+
+        #Response values and plots
+
+        sys2 = stateSpaceSymmetric()
+        T,U1,U2,U3,U4,I = produce_datapoints.points1(self.data[2:])
+        [t,y,x] = dynamic_response.dynamic_response(sys2,T,I)
+        y1,y2,y3,y4 = produce_datapoints.points2(y)
+        dynamic_response_plot.plot_shortPeriod(t,y1,U1,y2,U2,y3,U3,y4,U4)
+
         print 'Phugoid Calculation: End'
+
 
     def aperiodicRoll(self):             # Call all functions needed for calculation in the dynamic measurement series
         print 'Aperiodic Roll Calculation: Begin'
@@ -265,8 +268,8 @@ def init():
 if __name__== "__main__":
     ap = init()
     input = raw_input('Enter input')
-    ap.firstMeasurementSeries()
-    ap.secondMeasurementSeries()
+    #ap.firstMeasurementSeries()
+    #ap.secondMeasurementSeries()
 
     if input == '1':
         ap.shortPeriod()
